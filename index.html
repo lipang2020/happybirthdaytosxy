@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <noscript><iframe src="*.htm"></iframe></noscript>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <title>Happy Birthday To SXY!</title>
+</head>
+<style>
+    body {
+        width: 100%;
+        height: 100%;
+        background: black;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+
+    /*图片部分*/
+    .pic {
+        width: 210px;
+        height: 210px;
+        border-radius: 20px;
+        /* overflow: hidden; */
+        position: relative;
+        top: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 0 5px #fff;
+        /* z-index: 666; */
+    }
+
+    .pic img {
+        filter: blur(8px);
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    /*皇冠*/
+    .pictop {
+        position: absolute;
+        top: -90px;
+        font-size: 50px;
+        text-align: center;
+        display: block;
+        transform: scale(2.5) translateX(-15%);
+        left: 50%;
+        color: #f5d48c;
+        text-shadow: 0 0 5px #f5d48c,
+            0 0 10px #f5d48c,
+            0 0 15px #f5d48c,
+            0 0 20px #f7f6cc,
+            0 0 35px #eeeacc,
+            0 0 40px #f8f1c8,
+            0 0 50px #fae9c4,
+            0 0 60px #424242;
+    }
+
+    /*小雨天气*/
+    .rainy {
+        width: 3.6875em;
+        height: 3.6875em;
+        /* background-color: skyblue; */
+        position: relative;
+        left: 90%;
+        /* bottom: 100%; */
+        transform: translateY(-50px);
+    }
+
+    .cloud {
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        width: 3.6875em;
+        height: 3.6875em;
+        margin: -1.84375em;
+        /* background: currentColor; */
+        color: #fff;
+        opacity: .6;
+        background: currentColor;
+        border-radius: 50%;
+        box-shadow:
+            -2.1875em 0.6875em 0 -0.6875em currentColor,
+            2.0625em 0.9375em 0 -0.9375em currentColor,
+            0 0 0 0.375em currentColor,
+            -2.1875em 0.6875em 0 -0.3125em currentColor,
+            2.0625em 0.9375em 0 -0.5625em currentColor;
+    }
+
+    .rain {
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        width: 3.75em;
+        height: 3.75em;
+        margin: 0.375em 0 0 -2em;
+        /* background: currentColor; */
+    }
+
+    .rain:after {
+        content: '';
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        width: 1.125em;
+        opacity: .6;
+
+        height: 1.125em;
+        margin: -1em 0 0 -0.25em;
+        background: #0cf;
+        border-radius: 100% 0 60% 50% / 60% 0 100% 50%;
+        transform: rotate(-28deg);
+
+        animation: rain 3s linear infinite;
+    }
+
+    /*click按钮部分*/
+    .click {
+        cursor: pointer;
+        position: relative;
+        width: 210px;
+        height: 105px;
+        line-height: 105px;
+        bottom: -222px;
+        text-align: center;
+        transform: translateX(-50%);
+        left: 50%;
+    }
+
+    .click p {
+        /* text-align: center; */
+        font-size: 3em;
+        margin: 20px 0 20px 0;
+    }
+
+    .click p a {
+        text-decoration: none;
+        color: #ccc;
+        transition: all 0.5s;
+        text-shadow: 0 0 10px #fff,
+            0 0 20px #fff,
+            0 0 30px #fff,
+            0 0 40px rgb(161, 162, 163),
+            0 0 70px #b4b5b6,
+            0 0 80px #959596,
+            0 0 100px #b8b9b9,
+            0 0 150px #303131;
+
+        position: relative;
+        /* z-index: 66; */
+    }
+
+    .click p .atwo {
+        text-decoration: none;
+        color: #ccc;
+        transition: all 0.5s;
+        color: #fff;
+        text-shadow: 0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 15px rgb(255, 197, 5),
+            0 0 20px #e3f166,
+            0 0 35px #e3f06c,
+            0 0 40px #ccf02b,
+            0 0 50px #fcff60,
+            0 0 60px #fcff4a;
+        font-size: 40px;
+        position: relative;
+    }
+
+    .click p .aone:hover {
+
+        color: #fff;
+        animation: blue 1.5s ease-in-out infinite alternate;
+    }
+
+    /*移动照亮部分*/
+    .box {
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    /*happy文字*/
+    .haptext {
+        padding-top: 30px;
+        text-align: center;
+        font-size: 50px;
+        color: #fff;
+        text-shadow: 0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 15px #fff,
+            0 0 20px #d2d3d4,
+            0 0 35px #383737,
+            0 0 40px #2d2e2e,
+            0 0 50px #545555,
+            0 0 60px #424242;
+    }
+
+    /*音符*/
+    .left,
+    .right {
+        position: fixed;
+        font-size: 4em;
+        color: #aaa;
+    }
+
+
+    .lefttop {
+        font-size: 4em;
+        top: 66px;
+        left: 123px;
+        transform: rotate(-40deg);
+        animation: testlight 1.5s alternate infinite;
+    }
+
+    .leftcent {
+        top: 300px;
+        left: 221px;
+        transform: rotate(40deg);
+        animation: testlight 1s alternate infinite;
+
+
+    }
+
+    .leftfoot {
+        bottom: 167px;
+        left: 72px;
+        transform: rotate(66deg);
+        animation: testlight 1s 2s alternate infinite;
+
+    }
+
+    .leftmid {
+        top: 433px;
+        left: 521px;
+        transform: rotate(52deg);
+        animation: testlight 1s .5s alternate infinite;
+
+    }
+
+    .leftmid2 {
+        font-size: 4em;
+        top: 128px;
+        left: 503px;
+        transform: rotate(-78deg);
+        animation: testlight 1.5s .5s alternate infinite;
+
+    }
+
+    .righttop {
+        top: 133px;
+        right: 323px;
+        transform: rotate(-40deg);
+        animation: testlight 1s 1s alternate infinite;
+
+    }
+
+    .rightcent {
+        top: 320px;
+        right: 111px;
+        transform: rotate(35deg);
+        animation: testlight 1s alternate infinite;
+
+
+    }
+
+    .rightfoot {
+        bottom: 67px;
+        right: 380px;
+        transform: rotate(98deg);
+        animation: testlight 1.5s .5s alternate infinite;
+
+
+    }
+
+    .rightmid {
+        top: 363px;
+        right: 523px;
+        transform: rotate(-88deg);
+        animation: testlight 2s 2.5s alternate infinite;
+
+    }
+
+    /*音符结束*/
+
+
+    /* 进入黑场优化 */
+    .black {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        z-index: 999;
+        position: fixed;
+    }
+
+    /* 爱心雨 */
+    .snowfall-flakes:before,
+    .snowfall-flakes:after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 30px;
+        display: block;
+        background: red;
+        border-radius: 10px 10px 0 0;
+        /* color: rgb(95, 84, 90); */
+    }
+
+    .snowfall-flakes:before {
+        transform: rotate(-45deg);
+    }
+
+    .snowfall-flakes:after {
+        transform: rotate(45deg);
+        left: 7px;
+    }
+
+    /*熊猫图标*/
+    .float {
+        float: left;
+        font-size: 3em;
+        padding-left: 10px;
+    }
+
+    /*倒计时*/
+    .picfoot {
+        position: relative;
+        width: 210px;
+        height: 90px;
+        overflow: hidden;
+        /* background-color: skyblue; */
+    }
+
+    .picfoot ul {
+        width: 210px;
+        height: 90px;
+        /* overflow: hidden; */
+        position: absolute;
+        top: -5px;
+        padding: 0;
+        /* animation: time 20s linear forwards; */
+    }
+
+    .picfoot li {
+        font-size: 3em;
+        text-align: center;
+        height: 90px;
+        list-style: none;
+        line-height: 90px;
+        font-weight: 700;
+        color: #ff8bbd;
+        text-shadow: 0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 14px rgb(255, 104, 247),
+            0 0 18px #FF1177,
+            0 0 21px #FF1177,
+            0 0 24px #FF1177,
+            0 0 28px #FF1177,
+            0 0 30px #FF1177;
+    }
+
+    @keyframes testlight {
+        from {
+            text-shadow: 0 0 5px rgb(158, 152, 152),
+                0 0 10px #aaa;
+        }
+
+        to {
+            color: #fff;
+            text-shadow: 0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 15px #fff,
+                0 0 20px #d2d3d4,
+                0 0 35px #383737,
+                0 0 40px #2d2e2e,
+                0 0 50px #545555,
+                0 0 60px #424242;
+        }
+    }
+
+    @keyframes testlight1 {
+        from {
+            text-shadow: 0 0 5px rgb(158, 152, 152),
+                0 0 10px #aaa;
+        }
+
+        to {
+            color: #fff;
+            text-shadow: 0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 15px #fff,
+                0 0 20px #fa2e2e,
+                0 0 35px #f13333,
+                0 0 40px #fa823c,
+                0 0 50px #f0942a,
+                0 0 60px #f73614;
+        }
+    }
+
+    @keyframes testlight2 {
+        from {
+            text-shadow: 0 0 5px rgb(158, 152, 152),
+                0 0 10px #aaa;
+        }
+
+        to {
+            color: #fff;
+            text-shadow: 0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 15px rgb(247, 70, 188),
+                0 0 20px #ec7dde,
+                0 0 35px #f06c6c,
+                0 0 40px #f02bc5,
+                0 0 50px #f77be6,
+                0 0 60px #e2dcdc;
+        }
+    }
+
+    @keyframes testlight3 {
+        from {
+            text-shadow: 0 0 5px rgb(158, 152, 152),
+                0 0 10px #aaa;
+        }
+
+        to {
+            color: #fff;
+            text-shadow: 0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 15px rgb(30, 5, 255),
+                0 0 20px #66c5f1,
+                0 0 35px #796cf0,
+                0 0 40px #2b87f0,
+                0 0 50px #607dff,
+                0 0 60px #4ac6ff;
+        }
+    }
+
+    @keyframes testlight4 {
+        from {
+            text-shadow: 0 0 5px rgb(158, 152, 152),
+                0 0 10px #aaa;
+        }
+
+        to {
+            color: #fff;
+            text-shadow: 0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 15px rgb(255, 197, 5),
+                0 0 20px #e3f166,
+                0 0 35px #e3f06c,
+                0 0 40px #ccf02b,
+                0 0 50px #fcff60,
+                0 0 60px #fcff4a;
+        }
+    }
+
+    @keyframes testlight5 {
+        from {
+            text-shadow: 0 0 5px rgb(158, 152, 152),
+                0 0 10px #aaa;
+        }
+
+        to {
+            color: #fff;
+            text-shadow: 0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 15px rgb(255, 197, 5),
+                0 0 20px #fc3af2,
+                0 0 35px #ff12f3,
+                0 0 40px #d92bf0,
+                0 0 50px #ff60ddc9,
+                0 0 60px #f94aff;
+        }
+    }
+
+    /* 
+    @keyframes testlight6 {
+        from {
+            text-shadow: 0 0 5px rgb(158, 152, 152),
+                0 0 10px #aaa;
+        }
+
+        to {
+            color: #fff;
+            text-shadow: 0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 15px rgb(26, 255, 5),
+                0 0 20px #51fc3a,
+                0 0 35px #71ff12,
+                0 0 40px #2bf0cf,
+                0 0 50px #60ff6dc9,
+                0 0 60px #cfff4a;
+        }
+    } */
+
+    @keyframes rain {
+        0% {
+            background: #0cf;
+            box-shadow:
+                0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2),
+                -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2),
+                -1.375em -0.125em 0 #0cf;
+        }
+
+        25% {
+            box-shadow:
+                0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2),
+                -0.875em 1.125em 0 -0.125em #0cf,
+                -1.375em -0.125em 0 rgba(255, 255, 255, 0.2);
+        }
+
+        50% {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow:
+                0.625em 0.875em 0 -0.125em #0cf,
+                -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2),
+                -1.375em -0.125em 0 rgba(255, 255, 255, 0.2);
+        }
+
+        100% {
+            box-shadow:
+                0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2),
+                -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2),
+                -1.375em -0.125em 0 #0cf;
+        }
+    }
+
+
+    @keyframes blue {
+        from {
+            text-shadow: 0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 30px #fff,
+                0 0 40px #228DFF,
+                0 0 70px #228DFF,
+                0 0 80px #228DFF,
+                0 0 100px #228DFF,
+                0 0 150px #228DFF;
+        }
+
+        to {
+            text-shadow: 0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 15px #fff,
+                0 0 20px #228DFF,
+                0 0 35px #228DFF,
+                0 0 40px #228DFF,
+                0 0 50px #228DFF,
+                0 0 75px #228DFF;
+        }
+    }
+
+    @keyframes pink {
+        from {
+            text-shadow: 0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 30px #fff,
+                0 0 40px #FF1177,
+                0 0 70px #FF1177,
+                0 0 80px #FF1177,
+                0 0 100px #FF1177,
+                0 0 150px #FF1177;
+        }
+
+        to {
+            text-shadow: 0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 15px #fff,
+                0 0 20px #FF1177,
+                0 0 35px #FF1177,
+                0 0 40px #FF1177,
+                0 0 50px #FF1177,
+                0 0 75px #FF1177;
+        }
+    }
+
+    @keyframes sxy {
+
+        0% {
+            text-shadow: 0 0 5px rgb(148, 146, 146),
+                0 0 10px rgb(151, 149, 149),
+                0 0 15px rgb(114, 114, 114)
+        }
+
+        100% {
+            text-shadow: 0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 15px #fff,
+                0 0 20px #d2d3d4,
+                0 0 35px #383737,
+                0 0 40px #2d2e2e,
+                0 0 50px #545555,
+                0 0 60px #424242;
+        }
+
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotateX(90deg);
+        }
+
+        100% {
+            transform: rotateX(0deg);
+
+        }
+    }
+
+    @keyframes time {
+        from {
+            top: -5px;
+        }
+
+        to {
+            top: -1900px;
+        }
+    }
+
+    @keyframes nice_sxy {
+        from {
+            filter: blur(8px);
+        }
+
+        to {
+            filter: blur(0px);
+        }
+    }
+</style>
+
+<body>
+    <audio src="images/Sparks Fly.mp3" id="music"></audio>
+    <div class="black">
+    </div>
+    <div class="float">🐼</div>
+    <div class="haptext">
+
+        🏻HAPPY&nbsp;&nbsp;&nbsp;&nbsp;BIRTHDAY&nbsp;&nbsp;&nbsp;&nbsp;TO&nbsp;&nbsp;&nbsp;&nbsp;YOU&nbsp;&nbsp;&nbsp;&nbsp;!😄
+    </div>
+    <div class="icon rainy">
+        <div class="cloud"></div>
+        <div class="rain"></div>
+    </div>
+    <div class="pic">
+        <span class="pictop">♕</span>
+        <img src="images/nice_girl.png" width="210" height="210" alt="">
+        <div class="picfoot">
+            <ul>
+                <li>2&nbsp;0&nbsp;0&nbsp;0</li>
+                <li>2&nbsp;0&nbsp;0&nbsp;1</li>
+                <li>2&nbsp;0&nbsp;0&nbsp;2</li>
+                <li>2&nbsp;0&nbsp;0&nbsp;3</li>
+                <li>2&nbsp;0&nbsp;0&nbsp;4</li>
+                <li>2&nbsp;0&nbsp;0&nbsp;5</li>
+                <li>2&nbsp;0&nbsp;0&nbsp;6</li>
+                <li>2&nbsp;0&nbsp;0&nbsp;7</li>
+                <li>2&nbsp;0&nbsp;0&nbsp;8</li>
+                <li>2&nbsp;0&nbsp;0&nbsp;9</li>
+                <li>2&nbsp;0&nbsp;1&nbsp;0</li>
+                <li>2&nbsp;0&nbsp;1&nbsp;1</li>
+                <li>2&nbsp;0&nbsp;1&nbsp;2</li>
+                <li>2&nbsp;0&nbsp;1&nbsp;3</li>
+                <li>2&nbsp;0&nbsp;1&nbsp;4</li>
+                <li>2&nbsp;0&nbsp;1&nbsp;5</li>
+                <li>2&nbsp;0&nbsp;1&nbsp;6</li>
+                <li>2&nbsp;0&nbsp;1&nbsp;7</li>
+                <li>2&nbsp;0&nbsp;1&nbsp;8</li>
+                <li>2&nbsp;0&nbsp;1&nbsp;9</li>
+                <li>2&nbsp;0&nbsp;2&nbsp;0</li>
+                <li>2&nbsp;0&nbsp;2&nbsp;1</li>
+                <!-- <li>2001</li>
+                <li>2002</li> -->
+            </ul>
+        </div>
+    </div>
+
+    <div class="click">
+        <p>
+            <a href="#" class="aone">CLICK</a>
+        </p>
+    </div>
+    <div class="left lefttop">♪</div>
+    <div class="left leftcent"> ♩ </div>
+    <div class="left leftfoot">♫ </div>
+    <div class="right righttop">♬</div>
+    <div class="right rightcent">¶</div>
+    <div class="right rightfoot">‖♭</div>
+    <div class="left leftmid">§</div>
+    <div class="left leftmid2">♯</div>
+    <div class="right rightmid">∮</div>
+    <!-- ♪ ♩ ♫ ♬ ¶ ‖♭ ♯ § ∮ -->
+    <!-- 点灯效果 -->
+    <div class="box"></div>
+</body>
+<script src="js/rain.js"></script>
+<script>
+    Rain({
+        speed: [2, 40],
+        hasBounce: true,
+        wind_direction: 340,
+        gravity: 0.05,
+        maxNum: 80,
+        numLevel: 5,
+        drop_chance: 0.4,
+        cloud: false
+    });
+</script>
+<script src="js/jquery.min.js"></script>
+<script src="js/snowfall.jquery.js"></script>
+<script>
+    // window.onload = function () {
+    //     function auto_height() {
+    //         document.querySelector("body").style.height = document.documentElement.clientHeight + "px";
+    //     }
+    //     auto_height();
+    // }
+    $(function () {
+        //全局变量
+        function change() {
+            flag = true
+        }
+        change()
+        /*click效果的实现*/
+        $(".click a").click(function () {
+            console.log("点击了a");
+            clearTimeout();
+            $(document).snowfall('clear');
+
+            // alert("666")
+            console.log("点击text");
+            if (flag) {
+                document.getElementById("music").play();
+                flag = false
+                $(".picfoot ul").css('animation', 'time 20s linear forwards')
+                $(".pic img").css('animation', 'nice_sxy 19s linear forwards')
+                setTimeout(function () {
+                    $(document).snowfall({
+                        flakeCount: 18, //设置爱心数目
+                        flakeColor: 'none'
+                    })
+                }, 20000);
+                $(".click a").unbind("click")
+                $(".click a").html("生日快乐!")
+                $(".click a").addClass("atwo")
+                $(".click a").removeClass("aone")
+                // $(".click a").css("animation", "rotate 3s infinite linear forwards;")
+                return flag
+
+            } else {
+                console.log("测试if的情况");
+                $(document).snowfall('clear');
+                // clearTimeout(fall);
+                $(".pic img").css("animation", 'none')
+                $(".picfoot ul").css('animation', "none");
+                $("body").append("<div class='black'></div>");
+                $("body").append("<div class='box'></div>");
+                clearTimeout()
+                flag = true
+                return flag
+            }
+
+        })
+        //鼠标监听
+        $(document).mousemove(function (e) {
+            $(".black").remove()
+            // console.log("mousemove", flag);
+            let x = e.pageX;
+            let y = e.pageY;
+            console.log("x", x); //600--800
+            console.log("y", y); ///600--700
+            if (flag) {
+                // alert("6")
+                $(".box").css("background",
+                    `radial-gradient(circle  at ${x}px ${y}px,transparent,#000 20%)`);
+                if (((x > 600) && (x < 800)) && ((y > 600) && (y < 750))) {
+                    console.log("嘻嘻嘻");
+                    $(".click").css("z-index", "9999")
+                } else {
+                    $(".click").css("z-index", "0")
+
+                }
+                console.log("1");
+            } else {
+                console.log("哈哈");
+                $(".box").remove()
+
+            }
+
+
+        })
+        /*鼠标点击*/
+        //祝福语录
+        let toSxy = ['2000:生日快乐，快乐成长♥',
+            '2001:生日快乐，快乐生活每一天。🌧',
+            '2002:生日快乐，幸福生活每一天。📧',
+            '2003:生日快乐，梦想成真。★',
+            '2004:生日快乐，茁壮成长。🌱',
+            '2005:生日快乐，学业有成。🎈',
+            '2006:生日快乐，每天开开心心。✨',
+            '2007:生日快乐，健健康康，平平安安。🌼',
+            '2008:生日快乐，北京奥运成功举办啦！！💪',
+            '2009:生日快乐，真诚的祝福传递与你，愿开心幸福!👋',
+            '2010:生日快乐，天天都有好心情!🌞',
+            '2011:生日快乐，愿你未来的每一天都开心快乐。🏃',
+            '2012:生日快乐，我想不到其他祝福词了。😅',
+            '2013:生日快乐，心想事成，越来越好。🌻',
+            '2014:生日快乐，快乐成长🎁。',
+            '2015:生日快乐，红红火火🔥',
+            '2016:生日快乐，每一天享受鲜花和掌声.👏',
+            '2017:生日快乐，🤔让我想想还有啥祝福没写。',
+            '2018:生日快乐，越来越好看，越来越漂亮。🌹',
+            '2019:生日快乐，软件3班，感谢相遇。😎',
+            '2020:生日快乐，早日实现梦想身高，你永远是最棒的🏆',
+            '2021:生日快乐🎁也是毕业快乐🎓。时间太快啦。你给人的印象总是积极向上，阳光开朗，值得每一个人信赖👍，是一位有着满满正能量的人儿👩。祝你前程似锦，早日暴富，往后日子一帆风顺开开心心。有缘再见吧！🤝'
+        ]
+        //注册事件
+        $("html").click(function (e) {
+            //生成随机下标
+            function getIndex() {
+                return Math.floor(Math.random() * 22); //获得0到21
+            }
+            //随机生成RGB颜色
+            function randomRgbColor() {
+                let r = Math.floor(Math.random() * 256);
+                let g = Math.floor(Math.random() * 256);
+                let b = Math.floor(Math.random() * 256);
+                return `rgb(${r},${g},${b})`;
+            }
+            let newText = $("<span>").text(toSxy[getIndex()]);
+            $("html").append(newText);
+            //获取鼠标点击坐标
+            let x = e.pageX;
+            let y = e.pageY;
+            //span添加css样式
+            newText.css({
+                "z-index": 999,
+                "top": y - 20,
+                "left": x,
+                "position": "absolute",
+                "font-weight": "bold",
+                "color": randomRgbColor(),
+                "user-select": "none",
+            });
+            //动画部分
+            newText.animate({
+                    "top": y - 200,
+                    "opacity": 0
+                }, 1600, //调节动画速度
+                function () {
+                    newText.remove(); //清除节点
+                }
+            );
+
+        })
+    })
+    /*禁止选中*/
+    document.οncοntextmenu = new Function('event.returnValue=false;');
+    document.onselectstart = new Function('event.returnValue=false;');
+    document.oncontextmenu = new Function('event.returnValue = false;');
+    // window.onkeydown = window.onkeyup = window.onkeypress = function (event) {
+    //     if (event.keyCode == 17) {
+
+
+    //         return false;
+
+    //     }
+    //     console.log("keycode", event.keyCode);
+    //     // 判断是否按下F12，F12键码为123  
+    //     if (event.keyCode == 123) {
+
+    //         event.preventDefault(); // 阻止默认事件行为  
+    //         window.event.returnValue = false;
+    //     }
+    // }
+</script>
+
+</html>
